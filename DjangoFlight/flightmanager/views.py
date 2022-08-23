@@ -1,10 +1,8 @@
-from distutils.command.build_scripts import first_line_re
-from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import Airport, Flight
 from .serializers import AirportSerializer, FlightSerializer
 from .initdb import populate_data

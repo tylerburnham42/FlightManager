@@ -1,10 +1,12 @@
-import pandas
 import os
+import pandas
 from DjangoFlight.settings import BASE_DIR
 from .models import Airport, Flight
 
 def populate_data():
-    cwd = os.getcwd()
+    """
+    Gets the flight and airport data from the data.csv file.
+    """
     filepath = os.path.join(BASE_DIR, 'flightmanager', 'data', 'data.csv')
     flight_data = pandas.read_csv(filepath)
 
@@ -13,7 +15,7 @@ def populate_data():
 
     airports = []
     airport_set = set()
-    for index, row in flight_data.iterrows():
+    for _, row in flight_data.iterrows():
         if row['origin'] not in airport_set:
             airport_set.add(row['origin'])
             airports.append(Airport(
@@ -32,7 +34,7 @@ def populate_data():
     Airport.objects.bulk_create(airports)
 
     flights = []
-    for index, row in flight_data.iterrows():
+    for _, row in flight_data.iterrows():
         flights.append(Flight(
             created_at = row['created_at'],
             updated_at = row['updated_at'],
@@ -49,7 +51,6 @@ def populate_data():
         ))
 
     Flight.objects.bulk_create(flights)
-
 
 
 if __name__ == "__main__":
