@@ -8,6 +8,15 @@ class AirportSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class FlightSerializer(serializers.ModelSerializer):
+    destination = AirportSerializer(read_only=True)
+    destination_id = serializers.PrimaryKeyRelatedField(
+        queryset=Airport.objects.all(), source="destination"
+    )
+    origin = AirportSerializer(read_only=True)
+    origin_id = serializers.PrimaryKeyRelatedField(
+        queryset=Airport.objects.all(), source="origin"
+    )
+
     class Meta:
         model = Flight
-        fields = '__all__'
+        fields = ('__all__')

@@ -3,6 +3,7 @@ from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 from .models import Airport, Flight
 from .serializers import AirportSerializer, FlightSerializer
@@ -15,6 +16,7 @@ class AirportViewSet(viewsets.ModelViewSet):
     """
     queryset = Airport.objects.all()
     serializer_class = AirportSerializer
+    
 
 class FlightViewSet(viewsets.ModelViewSet):
     """
@@ -22,6 +24,8 @@ class FlightViewSet(viewsets.ModelViewSet):
     """
     queryset = Flight.objects.all()
     serializer_class = FlightSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['id', 'origin_id', 'destination_id']
 
 
 @api_view(['POST'])

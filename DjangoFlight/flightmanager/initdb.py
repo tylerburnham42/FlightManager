@@ -6,8 +6,10 @@ from .models import Airport, Flight
 def populate_data():
     cwd = os.getcwd()
     filepath = os.path.join(BASE_DIR, 'flightmanager', 'data', 'data.csv')
-    print(filepath)
     flight_data = pandas.read_csv(filepath)
+
+    Flight.objects.all().delete()
+    Airport.objects.all().delete()
 
     airports = []
     airport_set = set()
@@ -48,7 +50,6 @@ def populate_data():
 
     Flight.objects.bulk_create(flights)
 
-    #print(flight_data.head(3)["origin_full_name"].to_string()) 
 
 
 if __name__ == "__main__":

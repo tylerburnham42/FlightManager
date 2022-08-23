@@ -1,7 +1,5 @@
 from django.db import models
 
-print("TEST")
-
 class Airport(models.Model):
     name = models.CharField(max_length=50)
     abbv = models.CharField(max_length=50, unique=True)
