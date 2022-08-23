@@ -1,4 +1,4 @@
-# Airline Seach App
+# Airline Search App
 
 This application uses Django for a backend and React as a front end to allow a user to request and search flight data imported originally from a csv file.
 
@@ -12,14 +12,14 @@ Install [Anaconda](https://www.anaconda.com/).
 
 
 
-In a new terminal navagate to the top level directory of the repository.
-Next create the enviroment from the enviroment.yml file by running the following command:
+In a new terminal navigate to the top level directory of the repository.
+Next create the environment from the environment.yml file by running the following command:
 
 ```bash
 cd DjangoFlight
 conda env create -f environment.yml
 ```
-Next activate the conda enviroment to verify the enviroment was created correctly.
+Next activate the conda environment to verify the environment was created correctly.
 ```bash
 conda activate flight-app
 ```
@@ -43,18 +43,18 @@ yarn install
 
 ### Starting the Application
 
-In a new terminal navagate to the top level directory of the repository. Next run the following commands to launch the Python backend.
+In a new terminal navigate to the top level directory of the repository. Next run the following commands to launch the Python backend.
 ```bash
 cd DjangoFlight
 conda activate flight-app
 python manage.py runserver
 ```
-In a second terminal navagate to the top level directory of the repository. Next run the following commands to launch the Python backend.
+In a second terminal navigate to the top level directory of the repository. Next run the following commands to launch the Python backend.
 ```bash
 cd frontend
 yarn start
 ```
-### Populate Inital Data
+### Populate Initial Data
 A simple post command was setup to tell the backend to pull data from the csv. In a more real situation this post could be replaced by another service pushing data to the database. 
 
 Open a browser and access the local Django backend. [http://localhost:8000/populate-data/](http://localhost:8000/populate-data/).
@@ -65,7 +65,7 @@ Click the POST command button.
 ## Design Notes
 The application was written with a React front-end and a django back-end. Material UI was chosen to simplify the creation of components. 
 
-The front end is witten with Typescript. The App.tsx loads the main window component that is the main element holding the states of the airport list and the currently loaded flights for the table. This main windows loads the search boxes and the main flight results table.
+The front end is written with Typescript. The App.tsx loads the main window component that is the main element holding the states of the airport list and the currently loaded flights for the table. This main windows loads the search boxes and the main flight results table.
 
 Below is an image of the main window.
 
@@ -167,7 +167,7 @@ The flights data can be filtered using the IDs of the Airports for Origin and De
 
 ![Autocomplete](/images/image3.PNG?raw=true)
 
-The airports are a forigen key link to the flight data. Each flight has 2 linked airports for origin and destination. That flight data when queried looks like the data looks like the image below. 
+The airports are a foreign key link to the flight data. Each flight has 2 linked airports for origin and destination. That flight data when queried looks like the data looks like the image below. 
 
 ![Autocomplete](/images/image4.PNG?raw=true)
 
